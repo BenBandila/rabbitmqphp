@@ -13,10 +13,10 @@ switch ($request["type"])
 {
 	case "login":
 		//$response = "login, yeah we can do that";
-		$connection = new AMQPStreamConnection('localhost', 5672, 'test', 'test');//change localhost to broker host
+		$connection = new AMQPStreamConnection('127.0.0.1', 5672, 'test', 'test');//change localhost to broker host
 	        $channel = $connection->channel();
-	        $username = $_POST['username'];
-	        $password = $_POST['password'];
+	        $username = $_POST['uname'];
+	        $password = $_POST['pword'];
 	        $array = Array( "username" => $username, "password" => $password );
 	        //$json = json_encode($array);
 	        //file_put_content("login.json", $json);

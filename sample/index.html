@@ -10,9 +10,13 @@ function HandleLoginResponse(response)
 
 function SendLoginRequest(username,password)
 {
+	console.log("start of SendLoginRequest func");
 	var request = new XMLHttpRequest();
+	console.log("init request variable");
 	request.open("POST","login.php",true);
+	console.log("opened request to login.php");
 	request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	console.log("set request header");
 	request.onreadystatechange= function ()
 	{
 		
@@ -21,8 +25,11 @@ function SendLoginRequest(username,password)
 			HandleLoginResponse(this.responseText);
 		}		
 	}
+	console.log("before sending request to login,php");
 	request.send("type=login&uname="+username+"&pword="+password);
+	console.log("sent request to login.php");
 }
+
 </script>
 
 <h1>login page</h1>
@@ -30,8 +37,20 @@ function SendLoginRequest(username,password)
 <div id="textResponse">
 awaiting response
 </div>
+<form>
+	<label for"username">Username</label>
+	<input type="text" placeholder="Enter Username" name="username" id="username" required>
+	<label for"password">Password</label>
+	<input type="text" placeholder="Enter Password" name="password" id="password" required>
+
+	<input type="button" onClick="SendLoginRequest(document.getElementById('username').value, document.getElementById('password').value)">Login</input>
+</form>
+<!--
 <script>
-SendLoginRequest("kehoed","12345");
+username = document.getElementById("username").value;
+password = document.getElementById("password").value;
+SendLoginRequest(username, password);
 </script>
+-->
 </body>
 </html>
