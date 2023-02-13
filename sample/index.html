@@ -13,7 +13,7 @@ function SendLoginRequest(username,password)
 {
 	console.log("start of SendLoginRequest func");
 	var request = new XMLHttpRequest();
-	console.log("init request variable");
+	console.log("set request var");
 	request.open("POST","login.php",true);
 	console.log("opened request to login.php");
 	request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
