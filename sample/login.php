@@ -11,19 +11,22 @@ if (!isset($_POST))
 }
  */
 
-//$username = $_POST["username"];
-//$password = $_POST["password"];
+$storePost = $_POST;
+$username = $storePost["username"];
+$password = $storePost["password"];
 $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 $request = array();
 $request['type'] = "login";
-$request['username'] = "ben";
-$request['password'] = "password";
+$request['username'] = $username;
+$request['password'] = $password;
 $request['message'] = "HI";
 $response = $client->send_request($request);
 print_r($response);
 if ($response == 1)
 {
 	$msg = "Login Successful";
+} else {
+	$msg = "Invalid Login";
 }
 echo json_encode($msg);
 exit(0);
